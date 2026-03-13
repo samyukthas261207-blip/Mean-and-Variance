@@ -44,6 +44,7 @@ It shows the distance of a random variable from its mean. It is calcualted as
 
 
 # Program :
+```
 import numpy as np
 
 L = [int(i) for i in input("Enter arrival data: ").split()]
@@ -80,7 +81,7 @@ for i in range(M + 1):
 print(f"\nThe Mean arrival rate is {mean:.3f}")
 print(f"The Variance of arrival from feeder is {var:.3f}")
 print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
-
+```
 
 # Output : 
 
