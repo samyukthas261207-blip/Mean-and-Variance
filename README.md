@@ -43,16 +43,47 @@ It shows the distance of a random variable from its mean. It is calcualted as
       ![image](https://user-images.githubusercontent.com/103921593/192942852-913550a9-fabe-4a55-b956-0487b18bbd97.png)
 
 
-# Experiment :
-
-![image](https://user-images.githubusercontent.com/103921593/229993174-5b67e57e-3e01-4ac4-9f83-410a932b22bf.png)
-
 # Program :
+import numpy as np
 
+L = [int(i) for i in input("Enter arrival data: ").split()]
+
+N = len(L)
+M = max(L)
+X = []
+f = []
+
+for i in range(M + 1):
+    c = 0
+    for j in range(N):
+        if L[j] == i:
+            c += 1
+    f.append(c)
+    X.append(i)
+
+sf = np.sum(f)
+
+p = [f[i] / sf for i in range(M + 1)]
+
+mean = np.inner(X, p)
+
+EX2 = np.inner(np.square(X), p)
+
+var = EX2 - mean**2
+SD = np.sqrt(var)
+
+print("\nX\tp(x)")
+for i in range(M + 1):
+    if f[i] > 0:
+        print(f"{X[i]}\t{p[i]:.3f}")
+
+print(f"\nThe Mean arrival rate is {mean:.3f}")
+print(f"The Variance of arrival from feeder is {var:.3f}")
+print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
 
 
 # Output : 
-
+https://private-user-images.githubusercontent.com/227095231/562142411-91f2a627-6b74-48a2-85b8-bff6804cbbe7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMzOTUxNzAsIm5iZiI6MTc3MzM5NDg3MCwicGF0aCI6Ii8yMjcwOTUyMzEvNTYyMTQyNDExLTkxZjJhNjI3LTZiNzQtNDhhMi04NWI4LWJmZjY4MDRjYmJlNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMzEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDMxM1QwOTQxMTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lODg0YjE5NTIzZmRiYjA4NDdhZWUyOWExZThmYTBjOTE5MGJlZDhkNWU3MjNjYzI2YmNiNGE5OWIzYjFjMjExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.y6CX0WqpDBSxpy3neag2qiY43UT-7V8DW98Z8de7P_4
 # Results :
 The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
 
